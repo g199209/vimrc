@@ -32,9 +32,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'g199209/vim-colors-solarized'
 " Molokai Theme
 Plugin 'tomasr/molokai'
-" vim-airline
+" Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+" Bookmarks
+Plugin 'MattesGroeger/vim-bookmarks'
+" NERDTree
+Plugin 'g199209/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -193,6 +199,10 @@ map Y y$
 noremap H ^
 noremap L $
 
+" 快速移至屏幕上方和下方
+nnoremap <leader>j L
+nnoremap <leader>k H
+
 " 让p可以在Visual模式下以此前yank的内容替换当前选择的文本块.
 vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
 
@@ -204,15 +214,18 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-" save changes
-map <Leader>s :wall<CR>
-" exit vim without saving any changes
-map <Leader>q :qall!<CR>
-" exit vim saving changes
-map <Leader>w :xall<CR>
+" 交换‘ & `
+" nnoremap ' `
+" nnoremap ` '
 
-" remap U to <C-r> for easier redo
-nnoremap U <C-r> 
+" 跳转
+nnoremap <space>o <C-o>
+nnoremap <space>i <C-i>
+
+" save changes
+nnoremap <leader>s :wall<CR>
+" exit vim
+nnoremap <leader>q :qall<CR>
 
 " Toggle line numbers
 nmap <silent> <F4> :set number!<CR>
@@ -222,6 +235,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" 窗口变为Tab
+nnoremap <C-t> <C-w>T
 
 "fold mappings, space to toggle fold
 nnoremap <space><space> za
@@ -245,29 +261,86 @@ autocmd FileType vim set foldlevel=0
 "-------[ Pluging Settings ]----------------------------------------"{{{1
 
 "-----------[ Solarized Theme ]------------{{{2
+
 " 256色显示模式
 let g:solarized_termcolors=256
+
 " Tab等的显示效果等级
 let g:solarized_visibility="low"
+
 " 背景色不透明
 let g:solarized_termtrans=0
+
 colorscheme solarized
+
 " }}}
 
 "-----------[ Molokai Theme ]------------{{{2
+
 " 256色显示模式
 let g:rehash256 = 1
+
 " colorscheme molokai
+
 " }}}
 
-"-----------[ vim-airline (Statue Bar) ]------------{{{2
+"-----------[ Airline ]------------{{{2
+"
 " 始终显示状态栏
 set laststatus=2
+
 " Use powerline font
 let g:airline_powerline_fonts = 1
+
+" Theme
 let g:airline_theme="bubblegum"
+
+" Tabline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" }}}
+
+"-----------[ Bookmarks ]------------{{{2
+
+" 标记颜色
+highlight BookmarkSign ctermbg=NONE ctermfg=027 
+highlight BookmarkAnnotationSign ctermbg=NONE ctermfg=022
+
+" Enables/disables automatic saving for bookmarks
+let g:bookmark_auto_save = 0
+
+" Automatically close bookmarks split when jumping to a bookmark
+let g:bookmark_auto_close = 1
+
+" Enables/disables warning when toggling to clear a bookmark with annotation
+let g:bookmark_show_toggle_warning = 0
+
+" Enables/disables line centering when jumping to bookmark
+let g:bookmark_center = 0
+
+" }}}
+
+"-----------[ NERDTree ]------------{{{2
+
+" 切换NERDTree窗口快捷键
+map <F2> :NERDTreeTabsToggle<CR>
+
+let NERDTreeIgnore=['\.py[cd]$', '\~$']
+
+" NERDTree 子窗口中不显示冗余帮助信息
+" let NERDTreeMinimalUI = 1
+
+" 显示隐藏文件
+let NERDTreeShowHidden = 1
+
+" When switching into a tab, make sure that focus is on the file window, not in the NERDTree window. 
+let g:nerdtree_tabs_focus_on_files = 0
+
+" A single click will open directory nodes, while a double click will still be required for file nodes.
+let NERDTreeMouseMode=2
+let g:NERDTreeMapOpenInTab="<CR>"
+
 " }}}
 
 " }}}
