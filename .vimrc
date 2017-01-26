@@ -38,9 +38,17 @@ Plugin 'vim-airline/vim-airline-themes'
 " Bookmarks
 Plugin 'MattesGroeger/vim-bookmarks'
 " NERDTree
-Plugin 'g199209/nerdtree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'jistr/vim-nerdtree-tabs'
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+" CtrlP
+Plugin 'ctrlpvim/ctrlp.vim'
+" EasyGrep
+Plugin 'dkprice/vim-easygrep'
+" AutoPair
+Plugin 'jiangmiao/auto-pairs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -226,6 +234,10 @@ nnoremap <space>i <C-i>
 nnoremap <leader>s :wall<CR>
 " exit vim
 nnoremap <leader>q :qall<CR>
+" close this window
+nnoremap <leader>c :close<CR>
+" only show this window
+nnoremap <leader>o :only<CR>
 
 " Toggle line numbers
 nmap <silent> <F4> :set number!<CR>
@@ -236,8 +248,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" 窗口变为Tab
-nnoremap <C-t> <C-w>T
+" Buffer Movements
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bb :buffer 
 
 "fold mappings, space to toggle fold
 nnoremap <space><space> za
@@ -339,7 +355,56 @@ let g:nerdtree_tabs_focus_on_files = 0
 
 " A single click will open directory nodes, while a double click will still be required for file nodes.
 let NERDTreeMouseMode=2
-let g:NERDTreeMapOpenInTab="<CR>"
+
+" }}}
+
+"-----------[ YouCompleteMe ]------------{{{2
+
+nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_key_invoke_completion = '<C-j>'
+
+" 不使用新窗口提示函数原型
+set completeopt=menuone 
+
+" ycm_extra_conf
+let g:ycm_global_ycm_extra_conf='~/.vim/ycm_cpp_conf.py'
+
+" 错误及警告标志
+let g:ycm_error_symbol = '✗'
+let g:ycm_warning_symbol = '⚠'
+
+" 注释及字符串中补全
+let g:ycm_complete_in_comments = 0
+let g:ycm_complete_in_strings = 1
+
+" 语法关键词补全
+let g:ycm_seed_identifiers_with_syntax = 1
+
+" }}}
+
+"-----------[ CtrlP ]------------{{{2
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+nnoremap <leader>bl :CtrlPBuffer<CR> 
+
+" }}}
+
+"-----------[ AutoPair ]------------{{{2
+
+let g:AutoPairsFlyMode = 1      
+
+" }}}
+
+"-----------[ EasyGrep ]------------{{{2
+
+" 默认只搜索关联文件
+let g:EasyGrepMode = 2
+
+" 不自动打开搜索结果
+let g:EasyGrepJumpToMatch = 0
+
 
 " }}}
 
