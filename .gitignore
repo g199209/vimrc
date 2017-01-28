@@ -2,4 +2,4 @@ bundle/*
 !bundle/Vundle.vim
 .netrwhist
 othervimrc/*
-vimrc.vim
+session/

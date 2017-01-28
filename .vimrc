@@ -49,6 +49,19 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dkprice/vim-easygrep'
 " AutoPair
 Plugin 'jiangmiao/auto-pairs'
+" TagList
+Plugin 'taglist.vim'
+" Startify
+Plugin 'mhinz/vim-startify'
+" NerdCommenter 
+Plugin 'scrooloose/nerdcommenter'
+" Ultisnips
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" Fcitx.Vim
+Plugin 'lilydjwg/fcitx.vim'
+" EasyMotion
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -109,6 +122,9 @@ set wildmode=list:longest,full
 set wildmenu
 " " Ignore certain types of files on completion
 set wildignore+=*.o,*.obj,*.pyc,.git,*.swp,*.bak,*.class,.svn,*~
+
+" 允许在没有保存的情况下切换Buffer
+set hidden
 
 " 限制每行宽度
 " autocmd FileType text setlocal textwidth=78
@@ -197,12 +213,6 @@ set foldlevel=99
 let mapleader=";"
 let g:mapleader = ';'
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" y$ -> Y Make Y behave like other capitals
-map Y y$
-
 " 使用H、L快速移动至行首行尾
 noremap H ^
 noremap L $
@@ -211,33 +221,30 @@ noremap L $
 nnoremap <leader>j L
 nnoremap <leader>k H
 
-" 让p可以在Visual模式下以此前yank的内容替换当前选择的文本块.
-vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
-
 " clear out the search highlight result
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader><space> :noh<CR>
 
 " make the tab key match bracket pairs.
 " I use this to move around all the time and <tab> is a hell of a lot easier to type than %.
 nnoremap <tab> %
 vnoremap <tab> %
 
-" 交换‘ & `
-" nnoremap ' `
-" nnoremap ` '
-
 " 跳转
 nnoremap <space>o <C-o>
 nnoremap <space>i <C-i>
 
 " save changes
-nnoremap <leader>s :wall<CR>
+nnoremap <leader>w :wall<CR>
 " exit vim
 nnoremap <leader>q :qall<CR>
 " close this window
-nnoremap <leader>c :close<CR>
+nnoremap <leader>x :close<CR>
 " only show this window
 nnoremap <leader>o :only<CR>
+" Save session
+nnoremap <leader>s :SSave<CR>
+" Load session
+nnoremap <leader>l :SLoad<CR>
 
 " Toggle line numbers
 nmap <silent> <F4> :set number!<CR>
@@ -250,14 +257,21 @@ nnoremap <C-l> <C-w>l
 
 " Buffer Movements
 nnoremap <leader>bn :bn<CR>
-nnoremap <leader>n :bn<CR>
+nnoremap <silent> <Left> :bn<CR>
 nnoremap <leader>bp :bp<CR>
+nnoremap <silent> <Right> :bp<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bb :buffer 
 
 "fold mappings, space to toggle fold
 nnoremap <space><space> za
 vnoremap <space><space> za
+
+" 让p可以在Visual模式下以此前yank的内容替换当前选择的文本块.
+vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
+
+" y$ -> Y Make Y behave like other capitals
+map Y y$
 
 "reselect visual block after indent/outdent 
 vnoremap < <gv
@@ -268,13 +282,22 @@ vnoremap > >gv
 "-------[ FileType Settings ]----------------------------------------"{{{1
 
 "-----------[ vim ]------------{{{2
+
 autocmd FileType vim set foldmethod=marker
 autocmd FileType vim set foldlevel=0
+
 " }}}
 
 " }}}
 
 "-------[ Pluging Settings ]----------------------------------------"{{{1
+
+"-----------[ Man ]------------{{{2
+
+" 定义:Man命令查看各类man信息的快捷键
+nmap <Leader>man :Man 3 <cword><CR>
+
+" }}}
 
 "-----------[ Solarized Theme ]------------{{{2
 
@@ -360,10 +383,15 @@ let NERDTreeMouseMode=2
 
 "-----------[ YouCompleteMe ]------------{{{2
 
+" 重新定义Vim的gd操作
 nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_key_invoke_completion = '<C-j>'
+" let g:ycm_key_invoke_completion = '<C-j>'
+
+" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+inoremap <leader>; <C-x><C-o>
 
 " 不使用新窗口提示函数原型
+" set completeopt=menuone, preview
 set completeopt=menuone 
 
 " ycm_extra_conf
@@ -379,6 +407,13 @@ let g:ycm_complete_in_strings = 1
 
 " 语法关键词补全
 let g:ycm_seed_identifiers_with_syntax = 1
+
+" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+
+" 弹出菜单及选中项颜色
+highlight Pmenu ctermbg=12 ctermfg=238
+highlight PmenuSel ctermbg=7 ctermfg=70                         
 
 " }}}
 
@@ -405,6 +440,72 @@ let g:EasyGrepMode = 2
 " 不自动打开搜索结果
 let g:EasyGrepJumpToMatch = 0
 
+
+" }}}
+
+"-----------[ Taglist ]------------{{{2
+
+" 切换Taglist窗口快捷键
+map <F3> :TlistToggle<CR>
+
+" 只显示当前文件Tag
+let Tlist_Show_One_File = 1
+
+" 显示函数原型
+let Tlist_Display_Prototype = 0 
+
+" 按名称排序
+let Tlist_Sort_Type = "name"
+
+" Right side
+let Tlist_Use_Right_Window = 1
+
+" }}}
+
+"-----------[ NerdCommenter ]------------{{{2
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" C语言也使用//风格的单行注释
+let g:NERDCustomDelimiters = { 'c': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' }  }
+
+" }}}
+
+"-----------[ Ultisnips ]------------{{{2
+
+" Snippets location
+let g:UltiSnipsSnippetDirectories=["~/.vim/bundle/vim-snippets/UltiSnips"]
+
+" UltiSnips 的 tab 键与 YCM 冲突，重新设定
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+
+" }}}
+
+"-----------[ Fcitx.Vim ]------------{{{2
+
+" 减小延迟
+set ttimeoutlen=50
+
+" }}}
+
+"-----------[ EasyMotion ]------------{{{2
+
+nmap <leader>f <Plug>(easymotion-overwin-f)
 
 " }}}
 
