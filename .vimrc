@@ -62,6 +62,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'lilydjwg/fcitx.vim'
 " EasyMotion
 Plugin 'easymotion/vim-easymotion'
+" Conque-GDB
+Plugin 'Conque-GDB'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -257,15 +259,18 @@ nnoremap <C-l> <C-w>l
 
 " Buffer Movements
 nnoremap <leader>bn :bn<CR>
-nnoremap <silent> <Left> :bn<CR>
+nnoremap <silent> <Right> :bn<CR>
 nnoremap <leader>bp :bp<CR>
-nnoremap <silent> <Right> :bp<CR>
+nnoremap <silent> <Left> :bp<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>bb :buffer 
 
 "fold mappings, space to toggle fold
 nnoremap <space><space> za
 vnoremap <space><space> za
+
+" 在Visual模式下可以用*来搜索选择的内容
+vnoremap * y/<C-r>"<CR>
 
 " 让p可以在Visual模式下以此前yank的内容替换当前选择的文本块.
 vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
@@ -506,6 +511,22 @@ set ttimeoutlen=50
 "-----------[ EasyMotion ]------------{{{2
 
 nmap <leader>f <Plug>(easymotion-overwin-f)
+
+" }}}
+
+"-----------[ Conque-GDB ]------------{{{2
+
+let g:ConqueGdb_Leader = '\'
+
+" let g:ConqueGdb_Run = <F5>
+let g:ConqueGdb_Continue = '<F5>'
+let g:ConqueGdb_Step = '<F6>'
+let g:ConqueGdb_Print = '<F7>'
+let g:ConqueGdb_ToggleBreak = '<F8>'
+" let g:ConqueGdb_SetBreak = '<NUL>'
+" let g:ConqueGdb_DeleteBreak =  '<NUL>'
+" let g:ConqueGdb_Finish = '<NUL>'
+" let g:ConqueGdb_Backtrace = '<NUL>'
 
 " }}}
 
