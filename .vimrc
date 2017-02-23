@@ -182,7 +182,7 @@ set smarttab
 " set expandtab
 
 " 开启虚空白
-set virtualedit=all
+set virtualedit=onemore
 
 " Insert模式下可用删除键删除所有内容
 set backspace=indent,eol,start
@@ -225,6 +225,9 @@ nnoremap <leader>k H
 
 " clear out the search highlight result
 nnoremap <leader><space> :noh<CR>
+
+" Use Ctrl-A to select all
+nnoremap <C-a> ggVG 
 
 " make the tab key match bracket pairs.
 " I use this to move around all the time and <tab> is a hell of a lot easier to type than %.
@@ -393,7 +396,7 @@ nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " let g:ycm_key_invoke_completion = '<C-j>'
 
 " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
-inoremap <leader>; <C-x><C-o>
+inoremap `` <C-x><C-o>
 
 " 不使用新窗口提示函数原型
 " set completeopt=menuone, preview
@@ -434,6 +437,7 @@ nnoremap <leader>bl :CtrlPBuffer<CR>
 "-----------[ AutoPair ]------------{{{2
 
 let g:AutoPairsFlyMode = 1      
+let g:AutoPairsShortcutBackInsert = '<C-)>'
 
 " }}}
 
@@ -495,9 +499,9 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '//', 'leftAlt': '/*', 'rightAlt':
 let g:UltiSnipsSnippetDirectories=["~/.vim/bundle/vim-snippets/UltiSnips"]
 
 " UltiSnips 的 tab 键与 YCM 冲突，重新设定
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+let g:UltiSnipsExpandTrigger="`<tab>"
+let g:UltiSnipsJumpForwardTrigger="`<tab>"
+let g:UltiSnipsJumpBackwardTrigger="`<s-tab>"
 
 " }}}
 
