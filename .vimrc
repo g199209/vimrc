@@ -64,6 +64,10 @@ Plugin 'lilydjwg/fcitx.vim'
 Plugin 'easymotion/vim-easymotion'
 " Conque-GDB
 Plugin 'Conque-GDB'
+" Markdown
+Plugin 'gabrielelana/vim-markdown'
+" Markdown-quote-syntax
+Plugin 'joker1007/vim-markdown-quote-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -192,6 +196,9 @@ set smartindent
 " Go with smartindent if there is no plugin indent file.
 set autoindent
 
+" 自动缩进开关
+set pastetoggle=<F9>
+
 " 代码折叠
 set foldenable
 " 折叠方法
@@ -228,6 +235,9 @@ nnoremap <leader><space> :noh<CR>
 
 " Use Ctrl-A to select all
 nnoremap <C-a> ggVG 
+
+" 快速插入当前日期时间
+inoremap <C-t> <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
 " make the tab key match bracket pairs.
 " I use this to move around all the time and <tab> is a hell of a lot easier to type than %.
@@ -293,6 +303,14 @@ vnoremap > >gv
 
 autocmd FileType vim set foldmethod=marker
 autocmd FileType vim set foldlevel=0
+
+" }}}
+
+"-----------[ markdown ]------------{{{2
+
+autocmd FileType markdown set wrap
+autocmd FileType markdown nnoremap j gj
+autocmd FileType markdown nnoremap k gk
 
 " }}}
 
@@ -531,6 +549,36 @@ let g:ConqueGdb_ToggleBreak = '<F8>'
 " let g:ConqueGdb_DeleteBreak =  '<NUL>'
 " let g:ConqueGdb_Finish = '<NUL>'
 " let g:ConqueGdb_Backtrace = '<NUL>'
+
+" }}}
+
+"-----------[ Markdown ]------------{{{2
+
+" Disable support for Jekyll files
+let g:markdown_include_jekyll_support = 0
+
+" Disable default mappings
+let g:markdown_enable_mappings = 0
+
+" Enable conceal for italic, bold, inline-code and link
+let g:markdown_enable_conceal = 1
+
+" Disable spell checking, it's wrong for Chinese.
+let g:markdown_enable_spell_checking = 0
+
+" }}}
+
+"-----------[ Markdown-quote-syntax ]------------{{{2
+
+" Add syntax rule
+let g:markdown_quote_syntax_filetypes = {
+        \ "css" : {
+        \   "start" : "\\%(css\\|scss\\)",
+        \},
+        \ "c" : {
+        \   "start" : "c",
+        \},
+  \}
 
 " }}}
 
