@@ -257,9 +257,9 @@ nnoremap <leader>x :close<CR>
 " only show this window
 nnoremap <leader>o :only<CR>
 " Save session
-nnoremap <leader>s :SSave<CR>
+nnoremap <C-s> :SSave<CR>
 " Load session
-nnoremap <leader>l :SLoad<CR>
+nnoremap <C-l> :SLoad<CR>
 
 " Toggle line numbers
 nmap <silent> <F4> :set number!<CR>
@@ -414,7 +414,7 @@ nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " let g:ycm_key_invoke_completion = '<C-j>'
 
 " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
-inoremap `` <C-x><C-o>
+inoremap <C-x><C-x> <C-x><C-o>
 
 " 不使用新窗口提示函数原型
 " set completeopt=menuone, preview
@@ -517,9 +517,9 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '//', 'leftAlt': '/*', 'rightAlt':
 let g:UltiSnipsSnippetDirectories=["~/.vim/bundle/vim-snippets/UltiSnips"]
 
 " UltiSnips 的 tab 键与 YCM 冲突，重新设定
-let g:UltiSnipsExpandTrigger="`<tab>"
-let g:UltiSnipsJumpForwardTrigger="`<tab>"
-let g:UltiSnipsJumpBackwardTrigger="`<s-tab>"
+let g:UltiSnipsExpandTrigger="<C-x><tab>"
+let g:UltiSnipsJumpForwardTrigger="<C-x><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<C-x><s-tab>"
 
 " }}}
 
@@ -532,7 +532,8 @@ set ttimeoutlen=50
 
 "-----------[ EasyMotion ]------------{{{2
 
-nmap <leader>f <Plug>(easymotion-overwin-f)
+nmap <leader>s <Plug>(easymotion-s2)
+nmap f <Plug>(easymotion-sl)
 
 " }}}
 
