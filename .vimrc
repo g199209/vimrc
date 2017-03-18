@@ -68,6 +68,8 @@ Plugin 'Conque-GDB'
 Plugin 'gabrielelana/vim-markdown'
 " Markdown-quote-syntax
 Plugin 'joker1007/vim-markdown-quote-syntax'
+" Autosave
+Plugin 'vim-auto-save'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -131,6 +133,9 @@ set wildignore+=*.o,*.obj,*.pyc,.git,*.swp,*.bak,*.class,.svn,*~
 
 " 允许在没有保存的情况下切换Buffer
 set hidden
+
+" Swap
+set noswapfile
 
 " 限制每行宽度
 " autocmd FileType text setlocal textwidth=78
@@ -256,10 +261,6 @@ nnoremap <leader>q :qall<CR>
 nnoremap <leader>x :close<CR>
 " only show this window
 nnoremap <leader>o :only<CR>
-" Save session
-nnoremap <C-s> :SSave<CR>
-" Load session
-nnoremap <C-l> :SLoad<CR>
 
 " Toggle line numbers
 nmap <silent> <F4> :set number!<CR>
@@ -580,6 +581,19 @@ let g:markdown_quote_syntax_filetypes = {
         \   "start" : "c",
         \},
   \}
+
+" }}}
+
+"-----------[ Autosave ]------------{{{2
+
+" enable AutoSave on Vim startup"
+let g:auto_save = 1 
+
+" do not save while in insert mode
+let g:auto_save_in_insert_mode = 0
+
+" do not display the auto-save notification
+let g:auto_save_silent = 1
 
 " }}}
 
