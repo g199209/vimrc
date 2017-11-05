@@ -84,6 +84,8 @@ flags = [
 '/usr/include/c++/4.8',
 '-isystem',
 '/usr/include/x86_64-linux-gnu/c++',
+'-isystem',
+'/usr/src/linux-headers-4.4.0-31/include',
 ]
 
 

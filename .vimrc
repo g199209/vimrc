@@ -112,7 +112,8 @@ set ignorecase
 set smartcase
 
 " 允许使用鼠标
-set mouse=a
+" set mouse=a
+set mouse=nv    " 解决在Putty中的Bug
 
 " 开启语法
 syntax on
