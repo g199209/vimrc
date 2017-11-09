@@ -47,8 +47,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 " EasyGrep
 Plugin 'dkprice/vim-easygrep'
-" AutoPair
-Plugin 'jiangmiao/auto-pairs'
+" AutoPair Gentle
+Plugin 'g199209/auto-pairs-gentle'
 " TagList
 Plugin 'taglist.vim'
 " Startify
@@ -70,6 +70,8 @@ Plugin 'gabrielelana/vim-markdown'
 Plugin 'joker1007/vim-markdown-quote-syntax'
 " Autosave
 Plugin 'vim-auto-save'
+" Echofunc
+Plugin 'echofunc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -454,10 +456,11 @@ nnoremap <leader>bl :CtrlPBuffer<CR>
 
 " }}}
 
-"-----------[ AutoPair ]------------{{{2
+"-----------[ AutoPairs Gentle ]------------{{{2
 
 let g:AutoPairsFlyMode = 1      
-let g:AutoPairsShortcutBackInsert = '<C-)>'
+let g:AutoPairsUseInsertedCount = 1
+" let g:AutoPairsShortcutBackInsert = '<C-)>'
 
 " }}}
 
