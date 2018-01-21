@@ -8,5 +8,7 @@
 git submodule update --init --recursive
 ```
 
+`UpdateYCM.sh`文件用于重建YouCompleteMe的LLVM服务器后端，新安装或更新YCM插件后均需要再次运行此脚本。
 
+需要在用户目录下同时建立`.vimrc`文件：`ln ~/.vim/.vimrc ~/.vimrc`
 
