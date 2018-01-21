@@ -31,7 +31,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Solarized Theme
 Plugin 'g199209/vim-colors-solarized'
 " Molokai Theme
-Plugin 'tomasr/molokai'
+" Plugin 'tomasr/molokai'
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -63,11 +63,11 @@ Plugin 'lilydjwg/fcitx.vim'
 " EasyMotion
 Plugin 'easymotion/vim-easymotion'
 " Conque-GDB
-Plugin 'Conque-GDB'
+" Plugin 'Conque-GDB'
 " Markdown
-Plugin 'gabrielelana/vim-markdown'
+" Plugin 'gabrielelana/vim-markdown'
 " Markdown-quote-syntax
-Plugin 'joker1007/vim-markdown-quote-syntax'
+" Plugin 'joker1007/vim-markdown-quote-syntax'
 " Autosave
 Plugin 'vim-auto-save'
 " Echofunc
