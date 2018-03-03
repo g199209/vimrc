@@ -62,16 +62,18 @@ Plugin 'honza/vim-snippets'
 Plugin 'lilydjwg/fcitx.vim'
 " EasyMotion
 Plugin 'easymotion/vim-easymotion'
+" Autosave
+Plugin 'vim-auto-save'
+" Echofunc
+Plugin 'echofunc.vim'
+" Python Mode
+Plugin 'python-mode/python-mode'
 " Conque-GDB
 " Plugin 'Conque-GDB'
 " Markdown
 " Plugin 'gabrielelana/vim-markdown'
 " Markdown-quote-syntax
 " Plugin 'joker1007/vim-markdown-quote-syntax'
-" Autosave
-Plugin 'vim-auto-save'
-" Echofunc
-Plugin 'echofunc.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -420,6 +422,9 @@ nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
 inoremap <C-x><C-x> <C-x><C-o>
 
+" 采用Python3解释器
+let g:ycm_python_binary_path = '/usr/bin/python3'
+
 " 不使用新窗口提示函数原型
 " set completeopt=menuone, preview
 set completeopt=menuone 
@@ -542,49 +547,28 @@ nmap f <Plug>(easymotion-sl)
 
 " }}}
 
-"-----------[ Conque-GDB ]------------{{{2
+"-----------[ Python Mode ]------------{{{2
 
-let g:ConqueGdb_Leader = '\'
+" Turn off plugin's warnings.
+let g:pymode_warnings = 0
 
-" let g:ConqueGdb_Run = <F5>
-let g:ConqueGdb_Continue = '<F5>'
-let g:ConqueGdb_Step = '<F6>'
-let g:ConqueGdb_Print = '<F7>'
-let g:ConqueGdb_ToggleBreak = '<F8>'
-" let g:ConqueGdb_SetBreak = '<NUL>'
-" let g:ConqueGdb_DeleteBreak =  '<NUL>'
-" let g:ConqueGdb_Finish = '<NUL>'
-" let g:ConqueGdb_Backtrace = '<NUL>'
+" Use Python 3
+" let g:pymode_python = 'python3'
 
-" }}}
+" Disable pymode-motion
+let g:pymode_motion = 0
 
-"-----------[ Markdown ]------------{{{2
+" Turn off run code script
+let g:pymode_run = 0
 
-" Disable support for Jekyll files
-let g:markdown_include_jekyll_support = 0
+" Disable Debug support
+let g:pymode_breakpoint = 0
 
-" Disable default mappings
-let g:markdown_enable_mappings = 0
+" Disable code checking
+let g:pymode_lint = 0
 
-" Enable conceal for italic, bold, inline-code and link
-let g:markdown_enable_conceal = 1
-
-" Disable spell checking, it's wrong for Chinese.
-let g:markdown_enable_spell_checking = 0
-
-" }}}
-
-"-----------[ Markdown-quote-syntax ]------------{{{2
-
-" Add syntax rule
-let g:markdown_quote_syntax_filetypes = {
-        \ "css" : {
-        \   "start" : "\\%(css\\|scss\\)",
-        \},
-        \ "c" : {
-        \   "start" : "c",
-        \},
-  \}
+" Disable auto complete
+let g:pymode_rope_completion = 0
 
 " }}}
 
