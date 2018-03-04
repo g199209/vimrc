@@ -1,4 +1,4 @@
-echo "Install dependancies? (y/n)?"
+echo "Install dependencies? (y/n)?"
 read DEP
 if [ $DEP == "y" ]; then
 sudo apt update
