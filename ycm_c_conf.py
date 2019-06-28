@@ -51,7 +51,7 @@ flags = [
 # a "-std=<something>".
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
-'-std=c89',
+'-std=c99',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
@@ -59,23 +59,23 @@ flags = [
 '-x',
 'c',
 '-isystem',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/BoostParts',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/BoostParts',
 '-isystem',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/llvm/include',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/llvm/include',
 '-isystem',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/llvm/tools/clang/include',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/llvm/tools/clang/include',
 '-I',
 '.',
 '-I',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/ClangCompleter',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/ClangCompleter',
 '-isystem',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock/gtest',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock/gtest',
 '-isystem',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock/gtest/include',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock/gtest/include',
 '-isystem',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock',
 '-isystem',
-'./bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock/include',
+'./plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/tests/gmock/include',
 '-isystem',
 '/usr/include',
 '-isystem',

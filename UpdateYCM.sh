@@ -1,4 +1,4 @@
 #! /bin/bash
 
-cd ./bundle/YouCompleteMe
-./install.py --clang-completer
+cd ./plugged/YouCompleteMe
+./install.py --clang-completer --go-completer

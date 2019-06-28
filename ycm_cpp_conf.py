@@ -81,11 +81,11 @@ flags = [
 '-isystem',
 '/usr/include/x86_64-linux-gnu/',
 '-isystem',
-'/usr/include/c++/4.8',
+'/usr/include/c++/7.4.0',
 '-isystem',
 '/usr/include/x86_64-linux-gnu/c++',
 '-isystem',
-'/usr/src/linux-headers-4.4.0-31/include',
+'/usr/src/linux-headers-4.15.0-51/include',
 ]
 
 

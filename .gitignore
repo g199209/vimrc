@@ -1,5 +1,7 @@
-bundle/*
-!bundle/Vundle.vim
 .netrwhist
 othervimrc/*
 session/
+plugged/*
+.ropeproject/
+autoload/
+.vim
