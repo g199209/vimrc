@@ -1,7 +1,7 @@
 "=======================================================================
 " Author:	高明飞
-" Email:	GMF@gaomf.cn
-" Blog:		http://GaoMF.cn
+" Email:	g199209@gmail.com
+" Blog:		https://GaoMF.cn
 " Sections:
 "       -> Initial Plugin		加载插件
 "       -> General Options		基础设置
@@ -15,6 +15,12 @@
 set nocompatible	" 不使用Vi兼容模式
 
 "-------[ Initial Plugin ]----------------------------------------"{{{1
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
