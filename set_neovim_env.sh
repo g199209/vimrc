@@ -1,6 +1,7 @@
 #! /bin/sh
 
-ln ~/.vim/.vimrc ~/.vim
+rm ~/.vimrc
+ln ~/.vim/.vimrc ~/.vimrc
+rm -rf ~/.config/nvim
 ln -s ~/.vim ~/.config/nvim
-ln ~/.vimrc ~/.config/nvim/init.vim
 
