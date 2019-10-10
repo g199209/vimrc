@@ -140,6 +140,15 @@ set hidden
 " Swap
 set noswapfile
 
+" yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
+
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
+
 " 限制每行宽度
 " autocmd FileType text setlocal textwidth=78
 
@@ -162,8 +171,8 @@ set cursorline
 " set cursorcolumn
 
 " 是否自动换行
-set nowrap
-" set wrap
+" set nowrap
+set wrap
 
 " 是否显示制表符及空白字符
 " set list
