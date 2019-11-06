@@ -5,3 +5,4 @@ plugged/*
 .ropeproject/
 autoload/
 .vim
+init.vim
