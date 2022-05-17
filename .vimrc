@@ -40,7 +40,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 " YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 " EasyGrep
@@ -48,7 +48,7 @@ Plug 'dkprice/vim-easygrep'
 " AutoPair Gentle
 Plug 'g199209/auto-pairs-gentle'
 " TagList
-Plug 'vim-scripts/taglist.vim'
+" Plug 'vim-scripts/taglist.vim'
 " Startify
 Plug 'mhinz/vim-startify'
 " NerdCommenter 
