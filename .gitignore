@@ -6,3 +6,4 @@ plugged/*
 autoload/
 .vim
 init.vim
+files/

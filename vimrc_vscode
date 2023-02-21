@@ -1,0 +1,33 @@
+" Leader remap
+let mapleader=";"
+let g:mapleader = ';'
+
+" 使用H、L快速移动至行首行尾
+noremap H ^
+noremap L $
+
+" 快速移至屏幕上方和下方
+nnoremap <leader>j L
+nnoremap <leader>k H
+
+" clear out the search highlight result
+nnoremap <leader><space> :noh<CR>
+
+" Use Ctrl-A to select all
+nnoremap <C-a> ggVG 
+
+" make the tab key match bracket pairs.
+" I use this to move around all the time and <tab> is a hell of a lot easier to type than %.
+nnoremap <tab> %
+vnoremap <tab> %
+
+"fold mappings, space to toggle fold
+nnoremap <space><space> za
+vnoremap <space><space> za
+
+" y$ -> Y Make Y behave like other capitals
+map Y y$
+
+"reselect visual block after indent/outdent 
+vnoremap < <gv
+vnoremap > >gv
