@@ -14,15 +14,18 @@
 
 set nocompatible	" 不使用Vi兼容模式
 
+let g:using_nvim = has('nvim')
+
 "-------[ Initial Plugin ]----------------------------------------"{{{1
-if empty(glob('~/.vim/autoload/plug.vim'))
+if g:using_nvim
+if empty(glob("$HOME/.vim/autoload/plug.vim"))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
+call plug#begin("$HOME/.vim/plugged")
 
 " 插件列表
 
@@ -78,6 +81,7 @@ call plug#end()
 
 " 开启Man扩展插件
 source $VIMRUNTIME/ftplugin/man.vim
+endif
 
 " }}}
 
@@ -333,7 +337,7 @@ autocmd FileType markdown nnoremap k gk
 " }}}
 
 "-------[ Pluging Settings ]----------------------------------------"{{{1
-
+if g:using_nvim
 "-----------[ Man ]------------{{{2
 
 " 定义:Man命令查看各类man信息的快捷键
@@ -594,5 +598,5 @@ let g:auto_save_in_insert_mode = 0
 let g:auto_save_silent = 1
 
 " }}}
-
+endif
 " }}}
