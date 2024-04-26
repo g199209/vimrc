@@ -4,9 +4,7 @@ set -x
 
 rm -f ~/.vimrc
 ln ~/.vim/.vimrc ~/.vimrc
-rm -f ~/.vim/init.vim
-ln ~/.vim/.vimrc ~/.vim/init.vim
-rm -rf ~/.config/nvim
+unlink ~/.config/nvim
 mkdir -p ~/.config
 ln -s ~/.vim ~/.config/nvim
 
