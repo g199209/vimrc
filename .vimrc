@@ -163,6 +163,13 @@ endif
 " set backup
 " set backupext=.bak
 
+" Global python3 host
+if hostname() == "mingfeivlinux2"
+  let g:python3_host_prog = '/usr/local/bin/python3.9'
+else
+  let g:python3_host_prog = '/usr/bin/python3'
+endif
+
 " }}}
 
 "-------[ Display Settings ]----------------------------------------"{{{1
@@ -437,7 +444,11 @@ nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 inoremap <C-x><C-x> <C-x><C-o>
 
 " 采用Python3解释器
-let g:ycm_python_binary_path = '/usr/bin/python3'
+if hostname() == "mingfeivlinux2"
+  let g:ycm_python_binary_path = '/usr/local/bin/python3.9'
+else
+  let g:ycm_python_binary_path = '/usr/bin/python3'
+endif
 
 " 不使用新窗口提示函数原型
 " set completeopt=menuone, preview
