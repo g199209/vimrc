@@ -164,7 +164,7 @@ endif
 " set backupext=.bak
 
 " Global python3 host
-if hostname() == "mingfeivlinux2"
+if hostname() == "mingfeivlinux2" || hostname() == "mingfeivlinux-el8"
   let g:python3_host_prog = '/usr/local/bin/python3.9'
 else
   let g:python3_host_prog = '/usr/bin/python3'
